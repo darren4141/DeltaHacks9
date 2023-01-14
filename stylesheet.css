@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;600&family=Lato&display=swap');
 
+html{
+  scroll-behavior: smooth;
+}
+
 *{
     margin: 0;
     padding: 0;
     font-family: "Lato"
+    
 }
 
 .titlepage{
@@ -43,7 +48,7 @@
 }
 
 .displayCamera{
-    translate: 0vw 50vh; 
+    translate: 0vw 80vh; 
     position: absolute;
     background-color: white;
     width: 100%;
@@ -67,7 +72,7 @@
     justify-content: left;
     translate: 100px 0px;
     width: 350px;
-    height: 200px;
+    height: 350px;
     margin: 10px 15px;
     border-radius: 10px;
     padding: 20px 25px;
@@ -83,15 +88,15 @@
 }
 
 .card1{
-    background-image: url(buttonImages/Baron.jpg);
+    background-image: url(buttonImages/jack.jpg);
 }
 
 .card2{
-    background-image: url(buttonImages/Juliano.jpg);
+    background-image: url(buttonImages/curl.jpg);
 }
 
 .card3{
-    background-image: url(buttonImages/Benny.jpg);
+    background-image: url(buttonImages/lunge.jpg);
 }
 
 .card:hover{
@@ -123,8 +128,8 @@
   .parallax__layer {
     position: absolute;
     top: 0;
-    right: 0;
-    bottom: 0;
+    right: 7000px;
+    bottom: 40px;
     left: 0;
   }
   .parallax__layer img {
@@ -144,30 +149,27 @@
     z-index: 2;
   }
   
-  .parallax__layer__0 {
+  .parallax__layer__1 {
     transform: translateZ(-300px) scale(4);
   }
   
-  .parallax__layer__1 {
+  .parallax__layer__2 {
     transform: translateZ(-250px) scale(3.5);
   }
   
-  .parallax__layer__2 {
+  .parallax__layer__3 {
     transform: translateZ(-200px) scale(3);
   }
   
-  .parallax__layer__3 {
+  .parallax__layer__4 {
     transform: translateZ(-150px) scale(2.5);
   }
   
-  .parallax__layer__4 {
+  .parallax__layer__5 {
     transform: translateZ(-100px) scale(2);
   }
   
-  .parallax__layer__5 {
+  .parallax__layer__6 {
     transform: translateZ(-50px) scale(1.5);
   }
   
-  .parallax__layer__6 {
-    transform: translateZ(0px) scale(1);
-  }
