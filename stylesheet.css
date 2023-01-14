@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;600&family=Lato&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato"
+}
+/*
+.nav{
+    position: absolute;
+    width: 100%;
+    height: 100px;
+}
+
+.nav_links{
+    text-align: center;
+    padding: 20px;
+    justify-content: space-between;
+    background-color: darkgray;
+}
+
+.nav_links li{
+    display: inline-block;
+    padding: 10px 30px;
+}
+
+.nav_links li a{
+    color: white;
+    font-size: 200%;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover{
+    color:grey;
+}
+*/
+.titlepage{
+    position: intial;
+    width: 100vw;
+    height: 100vh;
+    font-size: 50px;
+}
+
+.title{
+    position: fixed;
+    translate: 70vw 15vh;
+    text-align: center;
+    font-family: "Chakra Petch";
+    font-size: 125%;
+    color: black;
+}
+
+.description{
+    position: fixed;
+    translate: 70vw 30vh;
+    text-align: center;
+    font-size:50%;
+    font-weight: 600;
+}
+
+.parallax {
+    perspective: 100px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    margin-left: -1500px;
+  }
+  
+  .parallax__layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .parallax__layer img {
+    display: block;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .parallax__cover {
+    background: #2D112B;
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 2000px;
+    z-index: 2;
+  }
+  
+  .parallax__layer__0 {
+    transform: translateZ(-300px) scale(4);
+  }
+  
+  .parallax__layer__1 {
+    transform: translateZ(-250px) scale(3.5);
+  }
+  
+  .parallax__layer__2 {
+    transform: translateZ(-200px) scale(3);
+  }
+  
+  .parallax__layer__3 {
+    transform: translateZ(-150px) scale(2.5);
+  }
+  
+  .parallax__layer__4 {
+    transform: translateZ(-100px) scale(2);
+  }
+  
+  .parallax__layer__5 {
+    transform: translateZ(-50px) scale(1.5);
+  }
+  
+  .parallax__layer__6 {
+    transform: translateZ(0px) scale(1);
+  }
