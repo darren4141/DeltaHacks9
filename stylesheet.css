@@ -195,6 +195,11 @@ html{
   background: rgb(205, 0, 0);
 }
 
+.jackCounter{
+   color: grey;
+   
+}
+
 .parallax {
     perspective: 100px;
     height: 100vh;

@@ -27,19 +27,23 @@ let flagL = false;
 let calories = 0;
 let jackCalories = 0.2;
 let curlCalories = 0.02;
-let lungeCalories = 0.3;
+let squatCalories = 0.32;
 
 console.log(document.getElementById('param'));
 const urlParams = new URLSearchParams(window.location.search);
-let jacks = urlParams.get("jacks");
-let lunges = urlParams.get("lunges");
-let curls = urlParams.get("curls");
+let jackLim = urlParams.get("jacks");
+let squatLim = urlParams.get("squats");
+let curlLim = urlParams.get("curls");
+
+let jackCounter = document.getElementById('jackCounter');
+let curlCounter = document.getElementById('curlCounter');
+let squatCounter = document.getElementById('squatCounter');
 
 //document.getElementById('param')
 let flag = false;
-document.getElementById("desiredJacks").innerHTML = jacks;
-document.getElementById("desiredLunges").innerHTML = lunges;
-document.getElementById("desiredCurls").innerHTML = curls;
+document.getElementById("desiredJacks").innerHTML = jackLim;
+document.getElementById("desiredSquats").innerHTML = squatLim;
+document.getElementById("desiredCurls").innerHTML = curlLim;
 function setup() {
 
     var canvas = createCanvas(1400, 700);
@@ -102,17 +106,18 @@ function receivedPoses(poses){
 
 //if both arms are going up to similar y values in a range then run this (use else if to make the other not run)
 
-        if(counterJumpingJacks<jacks){
+        if(counterJumpingJacks<jackLim){
             if((singlePose.rightWrist.y < singlePose.nose.y) && (singlePose.leftWrist.y < singlePose.nose.y)){
                 if(timesJJ>10){
                     counterJumpingJacks++;
                     document.getElementById("currentJacks").innerHTML = counterJumpingJacks;
 
                     calories += jackCalories;
+                    calories = Math.round(calories*100)/100
                     document.getElementById("caloriesBurned").innerHTML = calories;
     
-                    if(counterJumpingJacks >= jacks){
-                        jackCounter.style.color = "green";
+                    if(counterJumpingJacks >= jackLim){
+                        //jackCounter.style.color = "green";
                     }
                 }
                 timesJJ = 0;
@@ -124,7 +129,7 @@ function receivedPoses(poses){
 
         //curls
         
-        else if(counterCurls<curls){
+        else if(counterCurls<curlLim){
             if(((singlePose.rightWrist.y < singlePose.rightShoulder.y+singlePose.rightShoulder.y/margin) || (leftOverShoulder && !rightOverShoulder))){
                 if(timesC>10){
                     counterCurls++;
@@ -132,11 +137,12 @@ function receivedPoses(poses){
                     console.log("Curls", counterCurls);
 
                     calories += curlCalories;
+                    calories = Math.round(calories*100)/100
                     document.getElementById("caloriesBurned").innerHTML = calories;
 
 
-                    if(counterCurls >= curls){
-                        curlCounter.style.color = "green";
+                    if(counterCurls >= curlLim){
+                        //document.getElementById('curlCounter').style.color = "green";
                     }
                 }
                 timesC = 0;
@@ -148,19 +154,28 @@ function receivedPoses(poses){
 
         //squats
 
-        else if(counterLunges<lunges){
+        else if(counterSquats<squatLim){
             bar = true;
             if(singlePose.nose.y<175){
-                if(timesL>10){
+                if(timesS>10){
                     counterLunges++;
-                    document.getElementById("currentLunges").innerHTML = counterLunges;
+                    document.getElementById("currentSquats").innerHTML = counterSquats;
+                    
+                    calories += lungeCalories;
+                    calories = Math.round(calories*100)/100
+                    document.getElementById("caloriesBurned").innerHTML = calories;
+
+                    if(counterSquats>= squatLim){
+                        //document.getElementById('squatCounter').style.color = "green";
+                    }
+                
                 }
-                timesL = 0;
+                timesS = 0;
                 
             }
 
             else{
-                timesL++;            
+                timesS++;            
             }
         }
         else{

@@ -29,7 +29,7 @@ function countKnees(){
 }
 
 function choose(){
-    appended = appended + "jacks=" + numJacks + "&lunges=" + numLunges + "&curls=" + numCurls;
+    appended = appended + "jacks=" + numJacks + "&squats=" + numLunges + "&curls=" + numCurls;
     window.location = appended;
 }
 
