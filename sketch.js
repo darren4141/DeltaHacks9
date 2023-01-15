@@ -1,3 +1,5 @@
+//import * as ITMES from "script.js";
+
 let my_cam;
 let posenet;
 let noseX,noseY;
@@ -21,6 +23,20 @@ let flagJJ = false;
 let flagC = false;
 let flagL = false;
 
+let margin = 7;
+let times = 0;
+let counter = 0;
+console.log(document.getElementById('param'));
+const urlParams = new URLSearchParams(window.location.search);
+let jacks = urlParams.get("jacks");
+let lunges = urlParams.get("lunges");
+let curls = urlParams.get("curls");
+
+//document.getElementById('param')
+let flag = false;
+document.getElementById("desiredJacks").innerHTML = jacks;
+document.getElementById("desiredLunges").innerHTML = lunges;
+document.getElementById("desiredCurls").innerHTML = curls;
 function setup() {
 
     var canvas = createCanvas(1400, 700);
