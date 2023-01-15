@@ -27,23 +27,40 @@ let flagL = false;
 let calories = 0;
 let jackCalories = 0.2;
 let curlCalories = 0.02;
-let squatCalories = 0.32;
+let lungeCalories = 0.3;
 
 console.log(document.getElementById('param'));
 const urlParams = new URLSearchParams(window.location.search);
-let jackLim = urlParams.get("jacks");
-let squatLim = urlParams.get("squats");
-let curlLim = urlParams.get("curls");
+let jacks = urlParams.get("jacks");
+let lunges = urlParams.get("lunges");
+let curls = urlParams.get("curls");
 
 let jackCounter = document.getElementById('jackCounter');
-let curlCounter = document.getElementById('curlCounter');
-let squatCounter = document.getElementById('squatCounter');
+let curlCoutner = document.getElementById('curlCounter');
+let squatCoutner = document.getElementById('loungeCounter');
 
 //document.getElementById('param')
 let flag = false;
-document.getElementById("desiredJacks").innerHTML = jackLim;
-document.getElementById("desiredSquats").innerHTML = squatLim;
-document.getElementById("desiredCurls").innerHTML = curlLim;
+document.getElementById("desiredJacks").innerHTML = jacks;
+document.getElementById("desiredLunges").innerHTML = lunges;
+document.getElementById("desiredCurls").innerHTML = curls;
+
+
+var voice1 = new Audio('New_Recording.mp3')
+var voice2 = new Audio('New_Recording_2.mp3')
+var voice3 = new Audio('New_Recording_3.mp3')
+var voice4 = new Audio('New_Recording_4.mp3')
+var voice5 = new Audio('New_Recording_5.mp3')
+var voice6 = new Audio('New_Recording_6.mp3')
+var voice7 = new Audio('New_Recording_7.mp3')
+var voice8 = new Audio('New_Recording_8.mp3')
+var voice9 = new Audio('New_Recording_9.mp3')
+var voice10 = new Audio('New_Recording_10.mp3')
+var voice11 = new Audio('New_Recording_11.mp3')
+
+const voices = [voie1, voice2, voice3, voice4, voice5, voice6, voice7, voice8, voice9, voice10, voice11]
+
+
 function setup() {
 
     var canvas = createCanvas(1400, 700);
@@ -106,18 +123,19 @@ function receivedPoses(poses){
 
 //if both arms are going up to similar y values in a range then run this (use else if to make the other not run)
 
-        if(counterJumpingJacks<jackLim){
+        if(counterJumpingJacks<jacks){
             if((singlePose.rightWrist.y < singlePose.nose.y) && (singlePose.leftWrist.y < singlePose.nose.y)){
                 if(timesJJ>10){
                     counterJumpingJacks++;
                     document.getElementById("currentJacks").innerHTML = counterJumpingJacks;
 
                     calories += jackCalories;
-                    calories = Math.round(calories*100)/100
                     document.getElementById("caloriesBurned").innerHTML = calories;
     
-                    if(counterJumpingJacks >= jackLim){
+                    if(counterJumpingJacks >= jacks){
                         //jackCounter.style.color = "green";
+                    } else if(counterCurls%3==0){
+                        voices[Math.floor(Math.random()*4)].play()
                     }
                 }
                 timesJJ = 0;
@@ -125,10 +143,11 @@ function receivedPoses(poses){
             else if(((singlePose.rightWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2)) || (singlePose.leftWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2)))){
                 timesJJ++;
             }
+        }
 
         //curls
         
-        else if(counterCurls<curlLim){
+        else if(counterCurls<curls){
             if(((singlePose.rightWrist.y < singlePose.rightShoulder.y+singlePose.rightShoulder.y/margin) || (leftOverShoulder && !rightOverShoulder))){
                 if(timesC>10){
                     counterCurls++;
@@ -136,12 +155,13 @@ function receivedPoses(poses){
                     console.log("Curls", counterCurls);
 
                     calories += curlCalories;
-                    calories = Math.round(calories*100)/100
                     document.getElementById("caloriesBurned").innerHTML = calories;
 
 
-                    if(counterCurls >= curlLim){
-                        //document.getElementById('curlCounter').style.color = "green";
+                    if(counterCurls >= curls){
+                        //curlCounter.style.color = "green";
+                    } else if(counterCurls%3==0){
+                        voices[Math.floor(Math.random()*4)].play()
                     }
                 }
                 timesC = 0;
@@ -153,28 +173,26 @@ function receivedPoses(poses){
 
         //squats
 
-        else if(counterSquats<squatLim){
+        else if(counterLunges<lunges){
             bar = true;
             if(singlePose.nose.y<175){
-                if(timesS>10){
+                if(timesL>10){
                     counterLunges++;
-                    document.getElementById("currentSquats").innerHTML = counterSquats;
-                    
-                    calories += lungeCalories;
-                    calories = Math.round(calories*100)/100
-                    document.getElementById("caloriesBurned").innerHTML = calories;
-
-                    if(counterSquats>= squatLim){
-                        //document.getElementById('squatCounter').style.color = "green";
-                    }
+                    document.getElementById("currentLunges").innerHTML = counterLunges;
                 
+                    if(counterLunges >= lunges){
+                        //curlCounter.style.color = "green";
+                    } else if(counterCurls%3==0){
+                        voices[Math.floor(Math.random()*4)].play()
+                    }
+
                 }
-                timesS = 0;
+                timesL = 0;
                 
             }
 
             else{
-                timesS++;            
+                timesL++;            
             }
         }
         else{
