@@ -12,8 +12,9 @@ let margin = 40;
 
 let timesJJ = 0;
 let timesC = 0;
-let timeL = 0;
+let timesL = 0;
 
+let bar = 0;
 
 let counterCurls = 0;
 let counterJumpingJacks = 0;
@@ -41,7 +42,6 @@ function setup() {
     my_cam.hide();
     posenet = ml5.poseNet(my_cam, modelLoaded);
     posenet.on('pose',receivedPoses);
-  
 }
 
 
@@ -98,40 +98,55 @@ function receivedPoses(poses){
 
 //for jumping jacks
 
-        if((singlePose.rightWrist.y < singlePose.nose.y) && (singlePose.leftWrist.y < singlePose.nose.y)){
-            if(timesJJ>10){
-                counterJumpingJacks++;
-                document.getElementById("currentJacks").innerHTML = counterJumpingJacks;
-                console.log("jumping jacks ",counterJumpingJacks);
+//if both arms are going up to similar y values in a range then run this (use else if to make the other not run)
+
+        if(counterJumpingJacks<jacks){
+            if((singlePose.rightWrist.y < singlePose.nose.y) && (singlePose.leftWrist.y < singlePose.nose.y)){
+                if(timesJJ>10){
+                    counterJumpingJacks++;
+                    document.getElementById("currentJacks").innerHTML = counterJumpingJacks;
+                    console.log("jumping jacks ",counterJumpingJacks);
+                }
+                timesJJ = 0;
             }
-            
-            timesJJ = 0;
-            flagJJ = true;
-        }
-        else if(((singlePose.rightWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2)) || (singlePose.leftWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2))) && flagJJ){
-            timesJJ++;
-            flagJJ = false;
-        }
-
-
-// for curls
-
-        
-        else if(((rightOverShoulder && !leftOverShoulder) && (singlePose.rightWrist.y > singlePose.nose.y)) || ((leftOverShoulder && !rightOverShoulder) && (singlePose.leftWrist.y > singlePose.nose.y))){
-            if(timesC>10){
-                counterCurls++;
-                document.getElementById("currentCurls").innerHTML = counterCurls;
-                console.log("Curls", counterCurls);
+            else if(((singlePose.rightWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2)) || (singlePose.leftWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2)))){
+                timesJJ++;
             }
-            timesC = 0;
-            flag = true;
         }
-        else if((singlePose.rightWrist.y > singlePose.rightShoulder.y+singlePose.rightWrist.y/(margin/2)) || (singlePose.leftWrist.y > singlePose.leftShoulder.y+singlePose.leftWrist.y/(margin/2)) && flagC){
-            timesC++;
-            flag = false;
+        
+        else if(counterCurls<curls){
+            if(((singlePose.rightWrist.y < singlePose.rightShoulder.y+singlePose.rightShoulder.y/margin) || (leftOverShoulder && !rightOverShoulder))){
+                if(timesC>10){
+                    counterCurls++;
+                    document.getElementById("currentCurls").innerHTML = counterCurls;
+                    console.log("Curls", counterCurls);
+                }
+                timesC = 0;
+            }
+            else if(((singlePose.rightWrist.y > singlePose.rightShoulder.y+singlePose.rightWrist.y/(margin/2)) || (singlePose.leftWrist.y > singlePose.leftShoulder.y+singlePose.leftWrist.y/(margin/2)))){
+                timesC++;
+            }
         }
 
-        
+        else if(counterLunges<lunges){
+            bar = true;
+            if(singlePose.nose.y<175){
+                if(timesL>10){
+                    counterLunges++;
+                    document.getElementById("currentLunges").innerHTML = counterLunges;
+                }
+                timesL = 0;
+                
+            }
+
+            else{
+                timesL++;            
+            }
+        }
+        else{
+            bar = false;
+        }
+
 
 
 
@@ -147,6 +162,23 @@ function draw() {
     
     image(my_cam, 0, 0);
     fill(255,0,0);
+
+
+    if(bar){
+        const ctx = canvas.getContext('2d');
+
+    
+        // set line stroke and line width
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 5;
+    
+        // draw a red line
+        ctx.beginPath();
+        ctx.moveTo(100, 175);
+        ctx.lineTo(900, 175);
+        ctx.stroke();
+    }
+
 
     if(singlePose){
         for(let i=0; i<singlePose.keypoints.length; i++){
