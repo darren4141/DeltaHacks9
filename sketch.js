@@ -32,12 +32,12 @@ let lungeCalories = 0.3;
 console.log(document.getElementById('param'));
 const urlParams = new URLSearchParams(window.location.search);
 let jacks = urlParams.get("jacks");
-let lunges = urlParams.get("lunges");
+let lunges = urlParams.get("squats");
 let curls = urlParams.get("curls");
 
 let jackCounter = document.getElementById('jackCounter');
-let curlCoutner = document.getElementById('curlCounter');
-let squatCoutner = document.getElementById('loungeCounter');
+let curlCounter = document.getElementById('curlCounter');
+let loungeCounter = document.getElementById('loungeCounter');
 
 //document.getElementById('param')
 let flag = false;
@@ -46,19 +46,21 @@ document.getElementById("desiredLunges").innerHTML = lunges;
 document.getElementById("desiredCurls").innerHTML = curls;
 
 
-var voice1 = new Audio('New_Recording.mp3')
-var voice2 = new Audio('New_Recording_2.mp3')
-var voice3 = new Audio('New_Recording_3.mp3')
-var voice4 = new Audio('New_Recording_4.mp3')
-var voice5 = new Audio('New_Recording_5.mp3')
-var voice6 = new Audio('New_Recording_6.mp3')
-var voice7 = new Audio('New_Recording_7.mp3')
-var voice8 = new Audio('New_Recording_8.mp3')
-var voice9 = new Audio('New_Recording_9.mp3')
-var voice10 = new Audio('New_Recording_10.mp3')
-var voice11 = new Audio('New_Recording_11.mp3')
+var voice1 = new Audio('audio/New_Recording.mp3')
+var voice2 = new Audio('audio/New_Recording_2.mp3')
+var voice3 = new Audio('audio/New_Recording_3.mp3')
+var voice4 = new Audio('audio/New_Recording_4.mp3')
+var voice5 = new Audio('audio/New_Recording_5.mp3')
+var voice6 = new Audio('audio/New_Recording_6.mp3')
+var voice7 = new Audio('audio/New_Recording_7.mp3')
+var voice8 = new Audio('audio/New_Recording_8.mp3')
+var voice9 = new Audio('audio/New_Recording_9.mp3')
+var voice10 = new Audio('audio/New_Recording_10.mp3')
+var voice11 = new Audio('audio/New_Recording_11.mp3')
 
-const voices = [voie1, voice2, voice3, voice4, voice5, voice6, voice7, voice8, voice9, voice10, voice11]
+var done = new Audio('audio/Beep (sound effect).mp3')
+
+const voices = [voice1, voice2, voice3, voice4, voice5, voice6, voice7, voice8, voice9, voice10, voice11]
 
 
 function setup() {
@@ -130,11 +132,12 @@ function receivedPoses(poses){
                     document.getElementById("currentJacks").innerHTML = counterJumpingJacks;
 
                     calories += jackCalories;
-                    document.getElementById("caloriesBurned").innerHTML = calories;
+                    document.getElementById("caloriesBurned").innerHTML = Math.round(calories*100)/100;
     
                     if(counterJumpingJacks >= jacks){
+                        done.play()
                         //jackCounter.style.color = "green";
-                    } else if(counterCurls%3==0){
+                    } else if(counterJumpingJacks%3==0){
                         voices[Math.floor(Math.random()*4)].play()
                     }
                 }
@@ -148,17 +151,18 @@ function receivedPoses(poses){
         //curls
         
         else if(counterCurls<curls){
-            if(((singlePose.rightWrist.y < singlePose.rightShoulder.y+singlePose.rightShoulder.y/margin) || (leftOverShoulder && !rightOverShoulder))){
+            if(((singlePose.rightWrist.y < singlePose.rightShoulder.y+singlePose.rightShoulder.y/margin) || (singlePose.rightWrist.y < singlePose.leftShoulder.y+singlePose.leftShoulder.y/margin))){
                 if(timesC>10){
                     counterCurls++;
                     document.getElementById("currentCurls").innerHTML = counterCurls;
                     console.log("Curls", counterCurls);
 
                     calories += curlCalories;
-                    document.getElementById("caloriesBurned").innerHTML = calories;
+                    document.getElementById("caloriesBurned").innerHTML = Math.round(calories*100)/100;
 
 
                     if(counterCurls >= curls){
+                        done.play()
                         //curlCounter.style.color = "green";
                     } else if(counterCurls%3==0){
                         voices[Math.floor(Math.random()*4)].play()
@@ -180,7 +184,11 @@ function receivedPoses(poses){
                     counterLunges++;
                     document.getElementById("currentLunges").innerHTML = counterLunges;
                 
+                    calories += lungeCalories;
+                    document.getElementById("caloriesBurned").innerHTML = Math.round(calories*100)/100;
+
                     if(counterLunges >= lunges){
+                        done.play()
                         //curlCounter.style.color = "green";
                     } else if(counterCurls%3==0){
                         voices[Math.floor(Math.random()*4)].play()
@@ -211,7 +219,7 @@ function modelLoaded() {
 function draw() {
     
     image(my_cam, 0, 0);
-    fill(255,0,0);
+    fill(255,255,255);
 
 
     if(bar){
@@ -234,8 +242,8 @@ function draw() {
         for(let i=0; i<singlePose.keypoints.length; i++){
             ellipse(singlePose.keypoints[i].position.x, singlePose.keypoints[i].position.y,20);
         }
-        stroke(255,255,0);
-        strokeWeight(3);
+        stroke(129,255,134);
+        strokeWeight(5);
         for(let j=0; j<skeleton.length; j++){
             line(skeleton[j][0].position.x, skeleton[j][0].position.y, skeleton[j][1].position.x, skeleton[j][1].position.y)
         }
