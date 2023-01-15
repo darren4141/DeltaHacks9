@@ -57,7 +57,7 @@ html{
     text-align: center;
     font-size:65%;
     font-weight: 600;
-    text-shadow: 0 0 2px grey;
+    text-shadow: 0 0 7px grey;
 }
 
 .selection{
@@ -69,6 +69,7 @@ html{
 
 .selection h1{
     color: white;
+    text-shadow: 0 0 7px grey;
     text-align: center;
     translate: -350px 0vh;
 
@@ -135,6 +136,7 @@ html{
 
 .card h2{
     color: white;
+    text-shadow: 0 0 7px grey;
     position: absolute;
     top:70%;
     left: 0;
@@ -143,6 +145,7 @@ html{
 
 .card h3{
   color: white;
+  text-shadow: 0 0 7px grey;
   position: absolute;
   top:80%;
   left: 0;
@@ -216,7 +219,7 @@ html{
     top: 100%;
     left: 0;
     right: 0;
-    height: 700px;
+    height: 120vh;
     z-index: 2;
   }
   
