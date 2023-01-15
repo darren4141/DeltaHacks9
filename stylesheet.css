@@ -18,12 +18,25 @@ html{
     font-size: 50px;
 }
 
+.logo{
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  left: 875px;
+  top: 1000;
+}
+
+.logo top{
+  left: 1000px;
+  top: 1000px;
+}
+
 .maintitle{
-  translate: 105vw -70vh;
+  translate: 70vw -100vh;
   text-align: center;
   text-shadow: 0 0 2px grey, 0 0 7px grey;
   font-family: "Chakra Petch";
-  font-size: 250%;
+  font-size: 200%;
   color: black;
 }
 
@@ -40,7 +53,7 @@ html{
 }
 
 .description{
-    translate: 105vw -70vh;
+    translate: 107vw -111vh;
     text-align: center;
     font-size:65%;
     font-weight: 600;

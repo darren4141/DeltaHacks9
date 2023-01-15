@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mytrAIner</title>
+    <title>my.trAIner</title>
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
 
 
     <div class="parallax">
+
         <div class="parallax__layer parallax__layer__1">
             <img src="layers/1.png" />
         </div>
@@ -29,6 +30,7 @@
         <div class="parallax__layer parallax__layer__6">
             <img src="layers/6.png" />
         </div>
+        <img src="logo.png" class="logo top">
 
 
         <div class="parallax__cover">
@@ -43,15 +45,15 @@
             <div class="selection">
                 <h1 class="title">Select an exercise:</h1>
                 <div class="cards">
-                    <div class="card card1" onclick="chooseJack()">
+                    <div class="card card1" onclick="choose(0)">
                         <h2>Jumping jacks</h2>
                     </div>
     
-                    <div class="card card2" onclick="chooseCurl()">
+                    <div class="card card2" onclick="choose(1)">
                         <h2>Curls</h2>
                     </div>
 
-                    <div class="card card3" onclick="chooseLunge()">
+                    <div class="card card3" onclick="choose(2)">
                         <h2>Lunges</h2>
                     </div>
                 </div>
@@ -63,5 +65,5 @@
     </div>
 
     
-
+    <script src="./script.js"></script>
 </body>
