@@ -24,6 +24,11 @@ let flagJJ = false;
 let flagC = false;
 let flagL = false;
 
+let calories = 0;
+let jackCalories = 0.2;
+let curlCalories = 0.02;
+let lungeCalories = 0.3;
+
 console.log(document.getElementById('param'));
 const urlParams = new URLSearchParams(window.location.search);
 let jacks = urlParams.get("jacks");
@@ -87,9 +92,6 @@ function receivedPoses(poses){
         
         
         */
-       
-        let rightOverShoulder = singlePose.rightWrist.y < singlePose.rightShoulder.y+singlePose.rightShoulder.y/margin;
-        let leftOverShoulder = singlePose.leftWrist.y < singlePose.leftShoulder.y+singlePose.leftShoulder.y/margin;
 
         //console.log((rightOverShoulder && !leftOverShoulder) || (leftOverShoulder && !rightOverShoulder));
         //console.log(leftOverShoulder, " vs ", rightOverShoulder);
@@ -105,14 +107,21 @@ function receivedPoses(poses){
                 if(timesJJ>10){
                     counterJumpingJacks++;
                     document.getElementById("currentJacks").innerHTML = counterJumpingJacks;
-                    console.log("jumping jacks ",counterJumpingJacks);
+
+                    calories += jackCalories;
+                    document.getElementById("caloriesBurned").innerHTML = calories;
+    
+                    if(counterJumpingJacks >= jacks){
+                        jackCounter.style.color = "green";
+                    }
                 }
                 timesJJ = 0;
             }
             else if(((singlePose.rightWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2)) || (singlePose.leftWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2)))){
                 timesJJ++;
             }
-        }
+
+        //curls
         
         else if(counterCurls<curls){
             if(((singlePose.rightWrist.y < singlePose.rightShoulder.y+singlePose.rightShoulder.y/margin) || (leftOverShoulder && !rightOverShoulder))){
@@ -120,6 +129,14 @@ function receivedPoses(poses){
                     counterCurls++;
                     document.getElementById("currentCurls").innerHTML = counterCurls;
                     console.log("Curls", counterCurls);
+
+                    calories += curlCalories;
+                    document.getElementById("caloriesBurned").innerHTML = calories;
+
+
+                    if(counterCurls >= curls){
+                        curlCounter.style.color = "green";
+                    }
                 }
                 timesC = 0;
             }
@@ -127,6 +144,8 @@ function receivedPoses(poses){
                 timesC++;
             }
         }
+
+        //squats
 
         else if(counterLunges<lunges){
             bar = true;
@@ -146,8 +165,6 @@ function receivedPoses(poses){
         else{
             bar = false;
         }
-
-
 
 
 
