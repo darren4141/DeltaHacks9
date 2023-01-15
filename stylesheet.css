@@ -101,15 +101,15 @@ html{
     display: inline-block;
     justify-content: left;
     translate: 100px 0px;
-    width: 350px;
-    height: 350px;
+    width: 250px;
+    height: 325px;
     margin: 10px 15px;
     border-radius: 10px;
     padding: 20px 25px;
     background-size: 400px 350px;
     box-sizing: border-box;
     cursor:pointer;
-    background-position:top;
+    background-position:center;
     background-repeat: no-repeat;
     opacity: 0.7;
     transition: transform 0.5s;
@@ -126,7 +126,11 @@ html{
 }
 
 .card3{
-    background-image: url(buttonImages/lunge.jpg);
+    background-image: url(buttonImages/knee.jpg);
+}
+
+.card4{
+  background-image: url(buttonImages/lunge.jpg);
 }
 
 .card:hover{
@@ -155,8 +159,8 @@ html{
 .submit{
   font-size: 30px;
   position:relative;
-  left:14%;
-  top: 15%;
+  left:14.5%;
+  top: 10%;
   width: auto;
   color:#ecf0f1;
   text-decoration:none;

@@ -1,6 +1,7 @@
 window.numCurls = 0;
 window.numJacks = 0;
 window.numLunges = 0;
+window.numKnees = 0;
 let appended = "display.html?";
 
 function countJacks(){
@@ -20,6 +21,11 @@ function countCurls(){
     numCurls++;
     document.getElementById("numCurls").innerHTML = numCurls;
 
+}
+
+function countKnees(){
+    numKnees++;
+    document.getElementById("numKnees").innerHTML = numKnees;
 }
 
 function choose(){
