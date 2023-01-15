@@ -153,13 +153,13 @@ html{
   font-size: 30px;
   position:relative;
   left:14%;
-  top: 14%;
+  top: 15%;
   width: auto;
   color:#ecf0f1;
   text-decoration:none;
   border-radius:5px;
-  border:solid 1px #f39c12;
-  background:#e67e22;
+  border:solid 1px darkred;
+  background:red;
   text-align:center;
   padding:16px 18px 14px;
     
@@ -167,21 +167,21 @@ html{
   -moz-transition: all 0.1s;
   transition: all 0.1s;
     
-  -webkit-box-shadow: 0px 6px 0px #d35400;
-  -moz-box-shadow: 0px 6px 0px #d35400;
-  box-shadow: 0px 6px 0px #d35400;
+  -webkit-box-shadow: 0px 6px 0px rgb(173, 3, 3);
+  -moz-box-shadow: 0px 6px 0px rgb(173, 3, 3);
+  box-shadow: 0px 6px 0px rgb(173, 3, 3);
 }
 .submit:active{
-  -webkit-box-shadow: 0px 2px 0px #d35400;
-  -moz-box-shadow: 0px 2px 0px #d35400;
-  box-shadow: 0px 2px 0px #d35400;
+  -webkit-box-shadow: 0px 2px 0px rgb(173, 3, 3);
+  -moz-box-shadow: 0px 2px 0px rgb(173, 3, 3);
+  box-shadow: 0px 2px 0px #682b02;
   position:relative;
   left:14%;
   top: 15%;
 }
 
 .submit:hover{
-  background:#e63f22;
+  background: rgb(205, 0, 0);
 }
 
 .parallax {

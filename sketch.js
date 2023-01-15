@@ -23,6 +23,11 @@ let flagJJ = false;
 let flagC = false;
 let flagL = false;
 
+let calories = 0;
+let jackCalories = 0.2;
+let curlCalories = 0.02;
+let lungeCalories = 0.3;
+
 console.log(document.getElementById('param'));
 const urlParams = new URLSearchParams(window.location.search);
 let jacks = urlParams.get("jacks");
@@ -102,6 +107,8 @@ function receivedPoses(poses){
             if(timesJJ>10){
                 counterJumpingJacks++;
                 document.getElementById("currentJacks").innerHTML = counterJumpingJacks;
+                calories += jackCalories;
+                document.getElementById("caloriesBurned").innerHTML = calories;
                 console.log("jumping jacks ",counterJumpingJacks);
             }
             
@@ -121,6 +128,8 @@ function receivedPoses(poses){
             if(timesC>10){
                 counterCurls++;
                 document.getElementById("currentCurls").innerHTML = counterCurls;
+                calories += curlCalories;
+                document.getElementById("caloriesBurned").innerHTML = calories;
                 console.log("Curls", counterCurls);
             }
             timesC = 0;
