@@ -1,3 +1,5 @@
+//import * as ITMES from "script.js";
+
 let my_cam;
 let posenet;
 let noseX,noseY;
@@ -9,9 +11,17 @@ let specs,smoke;
 let margin = 7;
 let times = 0;
 let counter = 0;
+console.log(document.getElementById('param'));
+const urlParams = new URLSearchParams(window.location.search);
+let jacks = urlParams.get("jacks");
+let lunges = urlParams.get("lunges");
+let curls = urlParams.get("curls");
 
+//document.getElementById('param')
 let flag = false;
-
+document.getElementById("desiredJacks").innerHTML = jacks;
+document.getElementById("desiredLunges").innerHTML = lunges;
+document.getElementById("desiredCurls").innerHTML = curls;
 function setup() {
 
     var canvas = createCanvas(1400, 700);
@@ -69,6 +79,10 @@ function receivedPoses(poses){
         if(((singlePose.rightWrist.y < singlePose.rightShoulder.y-singlePose.rightShoulder.y/margin) || (singlePose.leftWrist.y < singlePose.leftShoulder.y-singlePose.leftShoulder.y/margin))){
             if(times>50){
                 counter++;
+                document.getElementById("currentJacks").innerHTML = counter;
+                document.getElementById("currentCurls").innerHTML = counter;
+                document.getElementById("currentLunges").innerHTML = counter;
+
                 console.log(counter);
             }
             times = 0;

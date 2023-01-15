@@ -45,18 +45,23 @@
             <div class="selection">
                 <h1 class="title">Select an exercise:</h1>
                 <div class="cards">
-                    <div class="card card1" onclick="choose(0)">
+                    <div class="card card1" onclick="countJacks()">
                         <h2>Jumping jacks</h2>
+                        <h3>Amount: <span id="numJacks"></span></h2>
                     </div>
     
-                    <div class="card card2" onclick="choose(1)">
+                    <div class="card card2" onclick="countCurls()">
                         <h2>Curls</h2>
+                        <h3>Amount: <span id="numCurls"></span></h2>
                     </div>
 
-                    <div class="card card3" onclick="choose(2)">
+                    <div class="card card3" onclick="countLunges()">
                         <h2>Lunges</h2>
+                        <h3>Amount: <span id="numLunges"></span></h3>
                     </div>
                 </div>
+
+                <button class="submit" onclick="choose()">Submit</button>
             </div>
 
         </div>
@@ -66,4 +71,5 @@
 
     
     <script src="./script.js"></script>
+
 </body>
