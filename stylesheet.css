@@ -18,24 +18,38 @@ html{
     font-size: 50px;
 }
 
+.maintitle{
+  translate: 105vw -70vh;
+  text-align: center;
+  text-shadow: 0 0 2px grey, 0 0 7px grey;
+  font-family: "Chakra Petch";
+  font-size: 250%;
+  color: black;
+}
+
+.ai{
+  color: red;
+}
+
 .title{
-    translate: 65vw -100vh;
+    translate: 122vw -85vh;
     text-align: center;
     font-family: "Chakra Petch";
-    font-size: 125%;
+    font-size: 150%;
     color: black;
 }
 
 .description{
-    translate: 65vw -100vh;
+    translate: 105vw -70vh;
     text-align: center;
-    font-size:50%;
+    font-size:65%;
     font-weight: 600;
+    text-shadow: 0 0 2px grey;
 }
 
 .selection{
     justify-content: right;
-    padding: 20px;
+    padding: 50px;
     width: 100%;
     height: 100vh;
 }
@@ -47,6 +61,7 @@ html{
 
 }
 
+/*
 .displayCamera{
     translate: 0vw 80vh; 
     position: absolute;
@@ -60,6 +75,7 @@ html{
     translate: 0vw 10vh; 
 
 }
+*/
 
 .cards{
     width: 100%;
@@ -128,8 +144,7 @@ html{
   .parallax__layer {
     position: absolute;
     top: 0;
-    right: 7000px;
-    bottom: 40px;
+    bottom: 0px;
     left: 0;
   }
   .parallax__layer img {
@@ -139,13 +154,13 @@ html{
   }
   
   .parallax__cover {
-    background: #2D112B;
+    background: #3B3B3B;
     display:flex;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    height: 2000px;
+    height: 700px;
     z-index: 2;
   }
   
@@ -170,6 +185,8 @@ html{
   }
   
   .parallax__layer__6 {
-    transform: translateZ(-50px) scale(1.5);
+    position: absolute;
+    left: 623px;
   }
   
+  /*translateZ(-50px) scale(1.5)*/

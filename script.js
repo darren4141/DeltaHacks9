@@ -1,7 +1,11 @@
-function homepage(){
-    window.location = "homepage.html";
+function chooseJack(){
+    window.location = "display.html"
 }
 
-function page1(){
-    window.location = "page1.html";
+function chooseCurl(){
+    window.location = "display.html"
+}
+
+function chooseLunge(){
+    window.location = "display.html"
 }
