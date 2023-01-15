@@ -110,6 +110,11 @@ function receivedPoses(poses){
                 calories += jackCalories;
                 document.getElementById("caloriesBurned").innerHTML = calories;
                 console.log("jumping jacks ",counterJumpingJacks);
+
+                if(counterJumpingJacks >= jacks){
+                    jackCounter.style.color = "green";
+                }
+
             }
             
             timesJJ = 0;
@@ -131,6 +136,10 @@ function receivedPoses(poses){
                 calories += curlCalories;
                 document.getElementById("caloriesBurned").innerHTML = calories;
                 console.log("Curls", counterCurls);
+
+                if(counterCurls >= curls){
+                    curlCounter.style.color = "green";
+                }
             }
             timesC = 0;
             flag = true;
