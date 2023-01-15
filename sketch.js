@@ -23,9 +23,6 @@ let flagJJ = false;
 let flagC = false;
 let flagL = false;
 
-let margin = 7;
-let times = 0;
-let counter = 0;
 console.log(document.getElementById('param'));
 const urlParams = new URLSearchParams(window.location.search);
 let jacks = urlParams.get("jacks");
@@ -104,6 +101,7 @@ function receivedPoses(poses){
         if((singlePose.rightWrist.y < singlePose.nose.y) && (singlePose.leftWrist.y < singlePose.nose.y)){
             if(timesJJ>10){
                 counterJumpingJacks++;
+                document.getElementById("currentJacks").innerHTML = counterJumpingJacks;
                 console.log("jumping jacks ",counterJumpingJacks);
             }
             
@@ -119,9 +117,10 @@ function receivedPoses(poses){
 // for curls
 
         
-        if(((rightOverShoulder && !leftOverShoulder) && (singlePose.rightWrist.y > singlePose.nose.y)) || ((leftOverShoulder && !rightOverShoulder) && (singlePose.leftWrist.y > singlePose.nose.y))){
+        else if(((rightOverShoulder && !leftOverShoulder) && (singlePose.rightWrist.y > singlePose.nose.y)) || ((leftOverShoulder && !rightOverShoulder) && (singlePose.leftWrist.y > singlePose.nose.y))){
             if(timesC>10){
                 counterCurls++;
+                document.getElementById("currentCurls").innerHTML = counterCurls;
                 console.log("Curls", counterCurls);
             }
             timesC = 0;
