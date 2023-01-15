@@ -6,11 +6,20 @@ let leyeX,leyeY;
 let singlePose,skeleton;
 let actor_img;
 let specs,smoke;
-let margin = 7;
-let times = 0;
-let counter = 0;
+let margin = 40;
 
-let flag = false;
+let timesJJ = 0;
+let timesC = 0;
+let timeL = 0;
+
+
+let counterCurls = 0;
+let counterJumpingJacks = 0;
+let counterLunges = 0;
+
+let flagJJ = false;
+let flagC = false;
+let flagL = false;
 
 function setup() {
 
@@ -65,26 +74,53 @@ function receivedPoses(poses){
         
         
         */
+       
+        let rightOverShoulder = singlePose.rightWrist.y < singlePose.rightShoulder.y+singlePose.rightShoulder.y/margin;
+        let leftOverShoulder = singlePose.leftWrist.y < singlePose.leftShoulder.y+singlePose.leftShoulder.y/margin;
 
-        if(((singlePose.rightWrist.y < singlePose.rightShoulder.y-singlePose.rightShoulder.y/margin) || (singlePose.leftWrist.y < singlePose.leftShoulder.y-singlePose.leftShoulder.y/margin))){
-            if(times>50){
-                counter++;
-                console.log(counter);
+        //console.log((rightOverShoulder && !leftOverShoulder) || (leftOverShoulder && !rightOverShoulder));
+        //console.log(leftOverShoulder, " vs ", rightOverShoulder);
+
+
+
+//for jumping jacks
+
+        if((singlePose.rightWrist.y < singlePose.nose.y) && (singlePose.leftWrist.y < singlePose.nose.y)){
+            if(timesJJ>10){
+                counterJumpingJacks++;
+                console.log("jumping jacks ",counterJumpingJacks);
             }
-            times = 0;
             
+            timesJJ = 0;
+            flagJJ = true;
         }
-        else if((singlePose.rightWrist.y > singlePose.rightShoulder.y-singlePose.rightWrist.y/(margin/2)) || (singlePose.leftWrist.y > singlePose.leftShoulder.y-singlePose.leftWrist.y/(margin/2)) && flag){
-            times++;
+        else if(((singlePose.rightWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2)) || (singlePose.leftWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2))) && flagJJ){
+            timesJJ++;
+            flagJJ = false;
+        }
+
+
+// for curls
+
+        
+        if(((rightOverShoulder && !leftOverShoulder) && (singlePose.rightWrist.y > singlePose.nose.y)) || ((leftOverShoulder && !rightOverShoulder) && (singlePose.leftWrist.y > singlePose.nose.y))){
+            if(timesC>10){
+                counterCurls++;
+                console.log("Curls", counterCurls);
+            }
+            timesC = 0;
+            flag = true;
+        }
+        else if((singlePose.rightWrist.y > singlePose.rightShoulder.y+singlePose.rightWrist.y/(margin/2)) || (singlePose.leftWrist.y > singlePose.leftShoulder.y+singlePose.leftWrist.y/(margin/2)) && flagC){
+            timesC++;
             flag = false;
         }
-        
-
-        //if(singlePose.rightWrist.y > singlePose.rightShoulder.y -)
 
         
 
-        
+
+
+
     }
 }
 
