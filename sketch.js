@@ -120,6 +120,7 @@ function receivedPoses(poses){
             else if(((singlePose.rightWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2)) || (singlePose.leftWrist.y > singlePose.nose.y+singlePose.nose.y/(margin/2)))){
                 timesJJ++;
             }
+        }
 
         //curls
         
